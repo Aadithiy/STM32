@@ -17,13 +17,15 @@
  */
 
 #include <stdint.h>
-
-
 int main(void)
 {
-    /* Loop forever */
-	for(;;)
-	{
-		__asm volatile ("nop");
-	}
+    uint32_t value = 22 ;
+    __asm volatile
+	(
+    	"mov r0, %0"
+    	:
+    	:"r" (value)
+		:"r0"
+	);
+	for(;;);
 }
